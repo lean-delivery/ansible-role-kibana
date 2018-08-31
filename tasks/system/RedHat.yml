@@ -1,0 +1,17 @@
+---
+- name: "Add Kibana repo"
+  template:
+    src: "kibana.repo.j2"
+    dest: "/etc/yum.repos.d/kibana.repo"
+    owner: "root"
+    group: "root"
+    mode: "0644"
+    force: True
+  become: True
+
+- name: "Kibana Import latest logstash GPG Key"
+
+  rpm_key:
+    key: "{{ kibana_gpg_key }}"
+    state: "present"
+  become: True
