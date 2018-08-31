@@ -18,7 +18,7 @@ install:
 
 script:
   - ansible-lint -c .ansible-lint `find . -regex ".*\.\(yml\)"`
-  - molecule test -s default
+  - molecule test -s docker-6.x
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
