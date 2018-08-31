@@ -3,7 +3,7 @@
   hosts: ansible_role_kibana_v5_centos
   gather_facts: True
   roles:
-    - role: kibana
+    - role: ansible-role-kibana
   vars:
     kibana_host: localhost
     elasticsearch_group: ansible_role_kibana_v5_centos
@@ -12,7 +12,7 @@
   hosts: ansible_role_kibana_v5_ubuntu
   gather_facts: True
   roles:
-    - role: kibana
+    - role: ansible-role-kibana
   vars:
     kibana_host: localhost
     elasticsearch_group: ansible_role_kibana_v5_ubuntu

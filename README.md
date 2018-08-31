@@ -58,7 +58,7 @@ Example Playbook
     elasticsearch_host: "localhost"
     elasticsearch_port: "9200"
   roles:
-     - role: kibana
+     - role: "lean-delivery.kibana"
 ```
 
 ### Installing kibana 6.x version with disabled xpack security feature:
@@ -71,7 +71,7 @@ Example Playbook
     kibana_config:
       xpack.security.enabled: false
   roles:
-     - role: kibana
+     - role: "lean-delivery.kibana"
 ```
 
 ### Installing kibana 5.x version:
@@ -83,7 +83,7 @@ Example Playbook
     elasticsearch_host: "elasticsearch.example.org"
     elasticsearch_port: "9200"
   roles:
-     - role: kibana
+     - role: "lean-delivery.kibana"
 ```
 
 License
