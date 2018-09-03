@@ -2,6 +2,7 @@ kibana role
 =========
 [![License](https://img.shields.io/badge/license-Apache-green.svg?style=flat)](https://raw.githubusercontent.com/lean-delivery/ansible-role-kibana/master/LICENSE)
 [![Build Status](https://travis-ci.org/lean-delivery/ansible-role-kibana.svg?branch=master)](https://travis-ci.org/lean-delivery/ansible-role-kibana)
+[![Build Status](https://gitlab.com/lean-delivery/ansible-role-kibana/badges/master/build.svg)](https://gitlab.com/lean-delivery/ansible-role-kibana)
 
 ## Summary
 
