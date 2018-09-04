@@ -1,5 +1,5 @@
 ---
-# Should be 5 or 6
+# Should be "5" or "6"
 elastic_branch: "5"
 kibana_port: "5601"
 kibana_host: "{{ inventory_hostname | default('localhost') }}"
