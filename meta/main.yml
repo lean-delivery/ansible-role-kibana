@@ -21,5 +21,9 @@ galaxy_info:
 
   galaxy_tags:
     - "monitoring"
+    - "visualization"
     - "system"
+    - "elastic"
+    - "kibana"
+    - "elk"
     - "web"
