@@ -12,7 +12,7 @@
       become: True
       changed_when: False
     - name: Install python for Ansible
-      raw: test -e /usr/bin/python || (apt install -y python-minimal python-zipstream)
+      raw: test -e /usr/bin/python || (apt -f install -y python-minimal python-zipstream)
       become: True
       changed_when: False
 
