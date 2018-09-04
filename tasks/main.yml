@@ -10,13 +10,9 @@
 - name: "Install kibana"
   include_tasks: "install-kibana.yml"
 
-- name: "Wait for kibana is UP"
-  uri:
-    url: "http://{{ kibana_host }}:{{ kibana_port }}/api/status"
-    status_code: "200"
-    validate_certs: False
-    return_content: True
-  register: "kibana_page"
-  until: kibana_page.status == 200
-  retries: "30"
-  delay: "60"
+- name: "Ensure that kibana is started and enabled on startup"
+  service:
+    name: "kibana"
+    state: "started"
+    enabled: True
+  become: True
