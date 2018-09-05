@@ -1,0 +1,30 @@
+---
+- name: "Install kibana package"
+  package:
+    name: "kibana{% if kibana_specific_version is defined %}\
+    -{{ kibana_specific_version }}{% endif %}"
+    state: "present"
+  notify: "Restart kibana"
+  become: True
+
+- name: "Create logs directory"
+  file:
+    path: "{{ kibana_log_path }}"
+    state: "directory"
+    owner: "kibana"
+    group: "kibana"
+  become: True
+
+- name: "Setup kibana settings"
+  template:
+    src: "kibana.yml.j2"
+    dest: "{{ kibana_config_path }}/kibana.yml"
+    owner: "root"
+    group: "root"
+    mode: "0644"
+    force: True
+  notify: "Restart kibana"
+  become: True
+
+- name: "Flush handlers"
+  meta: "flush_handlers"

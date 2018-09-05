@@ -1,0 +1,18 @@
+---
+- name: "Configure repository for current OS"
+  include_tasks: "{{ platform }}"
+  with_first_found:
+    - "system/{{ ansible_os_family }}.yml"
+    - "system/not-supported.yml"
+  loop_control:
+    loop_var: "platform"
+
+- name: "Install kibana"
+  include_tasks: "install-kibana.yml"
+
+- name: "Ensure that kibana is started and enabled on startup"
+  service:
+    name: "kibana"
+    state: "started"
+    enabled: True
+  become: True

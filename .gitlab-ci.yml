@@ -1,0 +1,60 @@
+---
+stages:
+  - deployment test
+
+before_script:
+  - ansible --version
+  - molecule --version
+
+variables:
+  GET_SOURCES_ATTEMPTS: "5"
+
+Docker kibana-5.x:
+  stage: deployment test
+  script:
+    - molecule test -s docker-5.x
+  tags:
+    - docker
+
+Docker kibana-6.x:
+  stage: deployment test
+  script:
+    - molecule test -s docker-6.x
+  tags:
+    - docker
+
+EPC kibana-5.x:
+  variables:
+    EPC_REGION: EPAM-BY2
+  stage: deployment test
+  script:
+    - molecule test -s cloud-epc-5.x
+  tags:
+    - delegated
+
+EPC kibana-6.x:
+  variables:
+    EPC_REGION: EPAM-BY2
+  stage: deployment test
+  script:
+    - molecule test -s cloud-epc-6.x
+  tags:
+    - delegated
+
+AWS kibana-5.x:
+  variables:
+    EPC_REGION: AWS-EUCENTRAL
+  stage: deployment test
+  script:
+    - molecule test -s cloud-aws-5.x
+  tags:
+    - delegated
+
+AWS kibana-6.x:
+  variables:
+    EPC_REGION: AWS-EUCENTRAL
+  stage: deployment test
+  script:
+    - molecule test -s cloud-aws-6.x
+  tags:
+    - delegated

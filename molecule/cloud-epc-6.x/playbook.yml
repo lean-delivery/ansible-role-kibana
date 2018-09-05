@@ -1,0 +1,22 @@
+---
+- name: "Testing kibana role on CentOS"
+  hosts: ansible_role_kibana_v6_centos
+  gather_facts: True
+  roles:
+    - role: ansible-role-kibana
+  vars:
+    elastic_branch: 6
+    kibana_host: localhost
+    kibana_config:
+      xpack.security.enabled: false
+
+- name: "Testing kibana role on Ubuntu"
+  hosts: ansible_role_kibana_v6_ubuntu
+  gather_facts: True
+  roles:
+    - role: ansible-role-kibana
+  vars:
+    elastic_branch: 6
+    kibana_host: localhost
+    kibana_config:
+      xpack.security.enabled: false

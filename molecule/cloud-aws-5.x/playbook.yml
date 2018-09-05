@@ -1,0 +1,16 @@
+---
+- name: "Testing kibana role on CentOS"
+  hosts: ansible_role_kibana_v5_centos
+  gather_facts: True
+  roles:
+    - role: ansible-role-kibana
+  vars:
+    kibana_host: localhost
+
+- name: "Testing kibana role on Ubuntu"
+  hosts: ansible_role_kibana_v5_ubuntu
+  gather_facts: True
+  roles:
+    - role: ansible-role-kibana
+  vars:
+    kibana_host: localhost
