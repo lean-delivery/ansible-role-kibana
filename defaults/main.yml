@@ -1,11 +1,11 @@
 ---
 # Version should be "5" or "6"
-elastic_branch: "5"
-kibana_port: "5601"
+elastic_branch: 5
+kibana_port: 5601
 kibana_host: "{{ inventory_hostname | default('localhost') }}"
-kibana_log_path: "/var/log/kibana"
-kibana_config_path: "/etc/kibana"
+kibana_log_path: /var/log/kibana
+kibana_config_path: /etc/kibana
 kibana_config: ""
-elasticsearch_host: "localhost"
-elasticsearch_port: "9200"
-kibana_gpg_key: "https://artifacts.elastic.co/GPG-KEY-elasticsearch"
+elasticsearch_host: localhost
+elasticsearch_port: 9200
+kibana_gpg_key: https://artifacts.elastic.co/GPG-KEY-elasticsearch
