@@ -39,7 +39,7 @@ AWS kibana:
   tags:
     - aws
 
-EPC kibana:
+.EPC kibana:
   variables:
     EPC_REGION: EPAM-BY2
   stage: deployment test
