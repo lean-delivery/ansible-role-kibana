@@ -1,2 +1,5 @@
 ---
 # vars file for kibana
+es_major_version: '{{ elastic_branch }}.x'
+kibana_package_name: '{{ es_use_oss_version | ternary("kibana-oss", "kibana") }}'
+es_repo_name: '{{ es_use_oss_version | ternary("oss-" + es_major_version, es_major_version) }}'

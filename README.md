@@ -39,7 +39,7 @@ Requirements
   All Kibana configuration parameters are supported. This is achieved using a configuration map parameter `kibana_config` which is serialized into the kibana.yml file.
   - `kibana_log_path`
   Kibana log storage directory.
-  - `kibana_gpg_key`
+  - `elastic_gpg_key`
   GPG key for repositories. Default value is `https://artifacts.elastic.co/GPG-KEY-elasticsearch`.
 
 ## Some examples of the installing current role

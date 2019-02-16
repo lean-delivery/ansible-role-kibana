@@ -1,6 +1,8 @@
 ---
-# Version should be "5" or "6"
-elastic_branch: 5
+# Version should be "6" or higher
+elastic_branch: 6
+es_version: '{{ es_major_version }}'
+kibana_version: '{{ es_version }}'
 kibana_port: 5601
 kibana_host: "{{ inventory_hostname | default('localhost') }}"
 kibana_log_path: /var/log/kibana
@@ -8,4 +10,9 @@ kibana_config_path: /etc/kibana
 kibana_config: ""
 elasticsearch_host: localhost
 elasticsearch_port: 9200
-kibana_gpg_key: https://artifacts.elastic.co/GPG-KEY-elasticsearch
+kibana_elasticsearch_url: 'http://{{ elasticsearch_host }}:{{ elasticsearch_port }}'
+elastic_gpg_key: https://artifacts.elastic.co/GPG-KEY-elasticsearch
+es_apt_url: 'deb https://artifacts.elastic.co/packages/{{ es_repo_name }}/apt stable main'
+es_yum_url: 'https://artifacts.elastic.co/packages/{{ es_repo_name }}/yum'
+es_repo_file: 'elastic-{{ es_major_version }}'
+es_use_oss_version: False
