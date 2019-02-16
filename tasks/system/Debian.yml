@@ -33,5 +33,5 @@
         force: False
       register: installed_package
       until: installed_package is succeeded
-      notify: Restart elasticsearch
+      notify: Restart kibana
   become: True
