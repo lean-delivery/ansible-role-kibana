@@ -9,7 +9,6 @@
       become: True
       changed_when: False
     - name: Install python for Ansible
-      # raw: test -e /usr/bin/python || (apt install -y python-minimal python-zipstream)
       raw: update-alternatives --install /usr/bin/python python /usr/bin/python3 1
       become: True
       changed_when: False
@@ -20,6 +19,5 @@
   tasks:
     - name: Install python for Ansible
       raw: test -e /usr/bin/python || (yum install -y python2 python-simplejson)
-      # raw: update-alternatives --install /usr/bin/python python2 /usr/bin/python3 1
       become: True
-      # changed_when: False
+      changed_when: False
