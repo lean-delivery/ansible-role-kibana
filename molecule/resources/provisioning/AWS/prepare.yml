@@ -9,7 +9,8 @@
       become: True
       changed_when: False
     - name: Install python for Ansible
-      raw: test -e /usr/bin/python || (apt install -y python-minimal python-zipstream)
+      # raw: test -e /usr/bin/python || (apt install -y python-minimal python-zipstream)
+      raw: update-alternatives --install /usr/bin/python python /usr/bin/python3 1
       become: True
       changed_when: False
 

@@ -4,7 +4,7 @@ elastic_branch: 6
 es_version: '{{ es_major_version }}'
 kibana_version: '{{ es_version }}'
 kibana_port: 5601
-kibana_host: "{{ inventory_hostname | default('localhost') }}"
+kibana_host: localhost
 kibana_log_path: /var/log/kibana
 kibana_config_path: /etc/kibana
 kibana_config: ""
