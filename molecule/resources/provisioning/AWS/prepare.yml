@@ -19,6 +19,7 @@
   gather_facts: False
   tasks:
     - name: Install python for Ansible
-      raw: test -e /usr/bin/python || (yum install -y python2 python-simplejson)
+      # raw: test -e /usr/bin/python || (yum install -y python2 python-simplejson)
+      raw: update-alternatives --install /usr/bin/python python /usr/bin/python3 1
       become: True
       changed_when: False
