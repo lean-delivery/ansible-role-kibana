@@ -34,4 +34,13 @@
       register: installed_package
       until: installed_package is succeeded
       notify: Restart kibana
+
+    - name: Create systemd path
+      file:
+        path: '{{ kibana_service_path }}'
+        state: directory
+        owner: root
+        group: root
+        recurse: True
+
   become: True
