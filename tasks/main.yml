@@ -29,5 +29,4 @@
   service:
     name: kibana
     state: started
-    enabled: True
   become: True
