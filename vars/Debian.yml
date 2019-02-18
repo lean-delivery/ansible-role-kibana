@@ -1,2 +1,3 @@
 ---
 kibana_default_file: /etc/default/kibana
+kibana_service_path: /etc/systemd/system

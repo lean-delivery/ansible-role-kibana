@@ -1,11 +1,4 @@
 ---
-- name: Load a variable file based on the OS type, or a default if not found
-  include_vars: '{{ platform_vars }}'
-  with_first_found:
-    - '{{ ansible_os_family }}.yml'
-  loop_control:
-    loop_var: platform_vars
-
 - name: Load a variable file based on the service manager
   include_vars: '{{ service_manager }}'
   with_first_found:
@@ -13,6 +6,13 @@
     - systemv.yml
   loop_control:
     loop_var: service_manager
+
+- name: Load a variable file based on the OS type, or a default if not found
+  include_vars: '{{ platform_vars }}'
+  with_first_found:
+    - '{{ ansible_os_family }}.yml'
+  loop_control:
+    loop_var: platform_vars
 
 - name: Install kibana packages for current OS
   include_tasks: '{{ platform }}'
