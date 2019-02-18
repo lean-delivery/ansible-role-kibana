@@ -2,7 +2,7 @@
 - block:
     - name: Create Directories
       file:
-        path: '{{ kibana_path_item }}'
+        path: "{{ lookup('vars', kibana_path_item) }}"
         state: directory
         owner: '{{ kibana_user }}'
         group: '{{ kibana_group }}'
