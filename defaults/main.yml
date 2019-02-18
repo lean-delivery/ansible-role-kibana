@@ -5,8 +5,14 @@ es_version: '{{ es_major_version }}'
 kibana_version: '{{ es_version }}'
 kibana_port: 5601
 kibana_host: localhost
-kibana_log_path: /var/log/kibana
-kibana_config_path: /etc/kibana
+kibana_user: kibana
+kibana_group: kibana
+
+kibana_home: '{{ default["kibana_home"] }}'
+kibana_pid_dir: '{{ default["kibana_pid_dir"] }}'
+kibana_log_dir: '{{ default["kibana_log_dir"] }}'
+kibana_conf_dir: '{{ default["kibana_conf_dir"] }}'
+kibana_data_dir: '{{ default["kibana_data_dir"] }}'
 kibana_config: ""
 elasticsearch_host: localhost
 elasticsearch_port: 9200

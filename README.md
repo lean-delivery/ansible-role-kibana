@@ -33,7 +33,7 @@ Requirements
   Specifies the port to use for Kibana. Default value is `5601`.
   - `elasticsearch_host` and `elasticsearch_port`  
   Variables are necessary for Kibana to be able to communicate to running Elasticsearch server. Please set proper values of these variables according to your infrastructure. Default values are `localhost` and `9200`.
-  - `kibana_config_path`  
+  - `kibana_conf_dir`  
   Path to kibana config directory. Default value is `/etc/kibana`.
   - `kibana_config`
   All Kibana configuration parameters are supported. This is achieved using a configuration map parameter `kibana_config` which is serialized into the kibana.yml file.

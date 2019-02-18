@@ -1,22 +1,46 @@
 ---
-- name: Create logs directory
+- name: Create Directories
   file:
-    path: '{{ kibana_log_path }}'
+    path: '{{ kibana_path_item }}'
     state: directory
-    owner: kibana
-    group: kibana
+    owner: '{{ kibana_user }}'
+    group: '{{ kibana_group }}'
+    recurse: True
+  loop:
+    - kibana_pid_dir
+    - kibana_log_dir
+    - kibana_conf_dir
+    - kibana_data_dir
+  loop_control:
+    loop_var: kibana_path_item
   become: True
 
-- name: Setup kibana settings
+- name: Copy kibana configuration file
   template:
     src: kibana.yml.j2
-    dest: '{{ kibana_config_path }}/kibana.yml'
-    owner: root
-    group: root
+    dest: '{{ kibana_conf_dir }}/kibana.yml'
+    owner: '{{ kibana_user }}'
+    group: '{{ kibana_group }}'
     mode: 0644
     force: True
   notify: Restart kibana
   become: True
+
+- name: Copy Default File for Instance
+  template:
+    src: default/kibana.j2
+    dest: '{{ kibana_default_file }}'
+    mode: 0644
+    force: True
+  notify: Restart kibana
+
+- name: Copy service configuration file
+  template:
+    src: '{{ kibana_service_script }}.j2'
+    dest: '{{ kibana_service_path }}/{{ kibana_service_script }}'
+    mode: '{{ kibana_service_script_mode }}'
+    force: True
+  notify: '{{ kibana_service_handlers }}'
 
 - name: Flush handlers
   meta: flush_handlers
