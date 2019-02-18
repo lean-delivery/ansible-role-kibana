@@ -6,7 +6,7 @@
         state: directory
         owner: '{{ kibana_user }}'
         group: '{{ kibana_group }}'
-        recurse: True
+        recurse: False
       loop:
         - kibana_pid_dir
         - kibana_log_dir
