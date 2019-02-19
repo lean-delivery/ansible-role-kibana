@@ -1,20 +1,20 @@
 # Kibana is served by a back end server. This setting specifies the port to use.
-server.port: {{ kibana_port }}
+server.port: '{{ kibana_port }}'
 
 # Specifies the address to which the Kibana server will bind. IP addresses and host names are both valid values.
 # The default is 'localhost', which usually means remote machines will not be able to connect.
 # To allow connections from remote users, set this parameter to a non-loopback address.
-server.host: "{{ kibana_host }}"
+server.host: '{{ kibana_host }}'
 
 # The URL of the Elasticsearch instance to use for all your queries.
-elasticsearch.url: "http://{{ elasticsearch_host }}:{{ elasticsearch_port }}"
+elasticsearch.url: '{{ kibana_elasticsearch_url }}'
 
 # Kibana uses an index in Elasticsearch to store saved searches, visualizations and
 # dashboards. Kibana creates a new index if the index doesn't already exist.
 kibana.index: ".kibana"
 
 # Enables you specify a file where Kibana stores log output.
-logging.dest: {{ kibana_log_path }}/kibana.log
+logging.dest: '{{ kibana_log_dir }}/kibana.log'
 
 # Set the value of this setting to true to suppress all logging output other than error messages.
 logging.quiet: true

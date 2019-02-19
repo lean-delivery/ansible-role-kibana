@@ -1,7 +1,12 @@
 ---
-- name: "Restart kibana"
+- name: Reload systemd configuration
+  systemd:
+    daemon_reload: True
+  become: True
+
+- name: Restart kibana
   service:
-    name: "kibana"
-    state: "restarted"
+    name: kibana
+    state: restarted
     enabled: True
   become: True

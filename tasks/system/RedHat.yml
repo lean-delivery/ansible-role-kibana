@@ -1,17 +1,34 @@
 ---
-- name: "Add Kibana repo"
-  template:
-    src: "kibana.repo.j2"
-    dest: "/etc/yum.repos.d/kibana.repo"
-    owner: "root"
-    group: "root"
-    mode: "0644"
-    force: True
-  become: True
+- name: Set kibana version if defined
+  set_fact:
+    kibana_package_name: '{{ kibana_package_name }}-{{ kibana_version }}'
+  when: kibana_version.find('.x') == -1
 
-- name: "Kibana Import latest logstash GPG Key"
+- block:
+    - name: Importing latest Elastic GPG Key
+      rpm_key:
+        key: '{{ elastic_gpg_key }}'
+        state: present
+      register: installed_key
+      until: installed_key is succeeded
 
-  rpm_key:
-    key: "{{ kibana_gpg_key }}"
-    state: "present"
+    - name: Add elasticsearch yum repository
+      yum_repository:
+        name: elasticsearch
+        description: Elasticsearch repository
+        file: '{{ es_repo_file }}'
+        baseurl: '{{ es_yum_url }}'
+        gpgcheck: True
+        gpgkey: '{{ elastic_gpg_key }}'
+        enabled: True
+        state: present
+
+    - name: Redhat - Installing Kibana package
+      yum:
+        name: '{{ kibana_package_name }}'
+        state: present
+        update_cache: True
+      register: installed_package
+      until: installed_package is succeeded
+      notify: Restart kibana
   become: True
