@@ -42,5 +42,5 @@
       notify: '{{ kibana_service_handlers }}'
   become: True
 
-- name: Flush handlers
-  meta: flush_handlers
+# - name: Flush handlers
+#   meta: flush_handlers
