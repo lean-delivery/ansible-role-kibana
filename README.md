@@ -76,40 +76,26 @@ Example Playbook
 
 ### Installing kibana 6.x version:
 ```yaml
-- name: "Install kibana"
+- name: Install kibana
   hosts: kibana-host
   vars:
-    elastic_branch: "6"
-    kibana_host: "localhost"
-    elasticsearch_host: "localhost"
-    elasticsearch_port: "9200"
+    elastic_branch: 6
+    kibana_host: localhost
   roles:
-     - role: "lean-delivery.kibana"
+     - role: lean-delivery.kibana
 ```
 
 ### Installing kibana 6.x version with disabled xpack security feature:
 ```yaml
-- name: "Install kibana"
+- name: Install kibana
   hosts: kibana-host
   vars:
-    elastic_branch: "6"
-    kibana_host: "localhost"
+    elastic_branch: 6
+    kibana_host: localhost
     kibana_config:
-      xpack.security.enabled: false
+      xpack.security.enabled: False
   roles:
-     - role: "lean-delivery.kibana"
-```
-
-### Installing kibana 5.x version:
-```yaml
-- name: "Install kibana"
-  hosts: kibana-host
-  vars:
-    kibana_host: "kibana.example.org"
-    elasticsearch_host: "elasticsearch.example.org"
-    elasticsearch_port: "9200"
-  roles:
-     - role: "lean-delivery.kibana"
+     - role: lean-delivery.kibana
 ```
 
 License
