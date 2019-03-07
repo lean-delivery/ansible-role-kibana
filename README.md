@@ -82,7 +82,7 @@ Example Playbook
     elastic_branch: 6
     kibana_host: localhost
   roles:
-     - role: lean-delivery.kibana
+     - role: lean_delivery.kibana
 ```
 
 ### Installing kibana 6.x version with disabled xpack security feature:
@@ -95,7 +95,7 @@ Example Playbook
     kibana_config:
       xpack.security.enabled: False
   roles:
-     - role: lean-delivery.kibana
+     - role: lean_delivery.kibana
 ```
 
 License
