@@ -22,7 +22,7 @@
         owner: '{{ kibana_user }}'
         group: '{{ kibana_group }}'
         mode: 0644
-        force: frue
+        force: true
       notify: Restart kibana
 
     - name: Copy Default File for Instance
