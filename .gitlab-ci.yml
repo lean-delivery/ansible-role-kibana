@@ -42,15 +42,6 @@ AWS kibana:
   tags:
     - aws
 
-AWS Windows kibana:
-  variables:
-    AWS_REGION: us-east-1
-  stage: deployment test
-  script:
-    - molecule test -s cloud-aws-windows
-  tags:
-    - aws
-
 EPC kibana:
   variables:
     EPC_REGION: EPAM-BY2
