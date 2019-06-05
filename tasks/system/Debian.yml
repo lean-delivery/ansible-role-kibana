@@ -23,14 +23,14 @@
       apt_repository:
         repo: '{{ es_apt_url }}'
         state: present
-        update_cache: True
+        update_cache: true
         filename: '{{ es_repo_file }}.list'
 
     - name: Debian - Installing kibana package
       apt:
         name: '{{ kibana_package_name }}'
         state: present
-        force: False
+        force: false
       register: installed_package
       until: installed_package is succeeded
       notify: Restart kibana
@@ -41,6 +41,6 @@
         state: directory
         owner: root
         group: root
-        recurse: True
+        recurse: true
 
-  become: True
+  become: true
