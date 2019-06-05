@@ -6,7 +6,7 @@
         state: directory
         owner: '{{ kibana_user }}'
         group: '{{ kibana_group }}'
-        recurse: False
+        recurse: false
       loop:
         - kibana_pid_dir
         - kibana_log_dir
@@ -22,7 +22,7 @@
         owner: '{{ kibana_user }}'
         group: '{{ kibana_group }}'
         mode: 0644
-        force: True
+        force: frue
       notify: Restart kibana
 
     - name: Copy Default File for Instance
@@ -30,7 +30,7 @@
         src: default/kibana.j2
         dest: '{{ kibana_default_file }}'
         mode: 0644
-        force: True
+        force: true
       notify: Restart kibana
 
     - name: Copy service configuration file
@@ -38,6 +38,6 @@
         src: '{{ kibana_service_script }}.j2'
         dest: '{{ kibana_service_path }}/{{ kibana_service_script }}'
         mode: '{{ kibana_service_script_mode }}'
-        force: True
+        force: true
       notify: '{{ kibana_service_handlers }}'
-  become: True
+  become: true

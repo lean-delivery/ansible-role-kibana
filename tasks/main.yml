@@ -29,4 +29,4 @@
   service:
     name: kibana
     state: started
-  become: True
+  become: true
