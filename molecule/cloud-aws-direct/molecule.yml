@@ -15,9 +15,9 @@ platforms:
     platform: centos7
     instance_type: m5.large
     region: us-east-1
-    vpc_subnet_id: subnet-05a2ef2b767afec50
+    vpc_subnet_id: subnet-0f2b9cd66faea38af
     assign_public_ip: false
-    spot_price: 0.04
+    spot_price: 0.06
     security_group_name:
       - default
     wait_timeout: 1800
@@ -25,46 +25,16 @@ platforms:
     groups:
       - rhel_family
 
-  - name: test-aws-centos6-kibana
-    image: ami-1585c46a
-    platform: centos6
-    instance_type: m4.large
-    region: us-east-1
-    vpc_subnet_id: subnet-05a2ef2b767afec50
-    assign_public_ip: false
-    spot_price: 0.04
-    security_group_name:
-      - default
-    wait_timeout: 1800
-    ssh_user: centos
-    groups:
-     - rhel_family
-
-  - name: test-aws-ubuntu16-kibana
-    image: ami-09677e0a6b14905b0
-    platform: ubuntu16
-    instance_type: m5.large
-    region: us-east-1
-    vpc_subnet_id: subnet-05a2ef2b767afec50
-    assign_public_ip: false
-    security_group_name:
-      - default
-    spot_price: 0.04
-    wait_timeout: 1800
-    ssh_user: ubuntu
-    groups:
-      - debian_family
-
   - name: test-aws-ubuntu18-kibana
     image: ami-012fd5eb46f56731f
     platform: ubuntu18
     instance_type: m5.large
     region: us-east-1
-    vpc_subnet_id: subnet-05a2ef2b767afec50
+    vpc_subnet_id: subnet-0f2b9cd66faea38af
     assign_public_ip: false
     security_group_name:
       - default
-    spot_price: 0.04
+    spot_price: 0.06
     wait_timeout: 1800
     ssh_user: ubuntu
     groups:
@@ -75,7 +45,7 @@ platforms:
     platform: debian9
     instance_type: m5.large
     region: us-east-1
-    vpc_subnet_id: subnet-05a2ef2b767afec50
+    vpc_subnet_id: subnet-0f2b9cd66faea38af
     assign_public_ip: false
     spot_price: 0.04
     security_group_name:
@@ -90,19 +60,19 @@ provisioner:
   log: false
   config_options:
     defaults:
+      forks: 30
       callback_whitelist: profile_tasks,timer
+    ssh_connection:
+      pipelining: true
   playbooks:
     create: ../resources/provisioning/AWS/create.yml
-    prepare: ../resources/provisioning/AWS/prepare.yml
     destroy: ../resources/provisioning/AWS/destroy.yml
+    verify: ../resources/tests/verify.yml
   lint:
     name: ansible-lint
 scenario:
   name: cloud-aws-direct
 verifier:
-  name: testinfra
-  options:
-    verbose: true
-  directory: ../resources/tests/
+  name: ansible
   lint:
-    name: flake8
+    name: ansible-lint
