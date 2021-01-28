@@ -22,7 +22,7 @@
         owner: '{{ kibana_user }}'
         group: '{{ kibana_group }}'
         mode: 0644
-        force: true
+        force: false
       notify: Restart kibana
 
     - name: Copy Default File for Instance
@@ -30,7 +30,7 @@
         src: default/kibana.j2
         dest: '{{ kibana_default_file }}'
         mode: 0644
-        force: true
+        force: false
       notify: Restart kibana
 
     - name: Copy service configuration file
@@ -38,6 +38,6 @@
         src: '{{ kibana_service_script }}.j2'
         dest: '{{ kibana_service_path }}/{{ kibana_service_script }}'
         mode: '{{ kibana_service_script_mode }}'
-        force: true
+        force: false
       notify: '{{ kibana_service_handlers }}'
   become: true
