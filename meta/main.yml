@@ -7,13 +7,12 @@ galaxy_info:
   description: "Role for kibana installation"
   company: "EPAM Systems "
   license: "Apache"
-  min_ansible_version: 2.5
+  min_ansible_version: 2.9
   issue_tracker_url: "https://github.com/lean-delivery/ansible-role-kibana/issues"
 
   platforms:
     - name: EL
       versions:
-        - 6
         - 7
     - name: Ubuntu
       versions:
