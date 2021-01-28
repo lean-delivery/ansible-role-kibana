@@ -30,7 +30,7 @@ Lint:
   tags:
     - aws
 
-Docker kibana:
+.Docker kibana:
   stage: deployment test
   script:
     - molecule test -s default
