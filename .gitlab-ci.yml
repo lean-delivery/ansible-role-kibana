@@ -42,6 +42,6 @@ AWS kibana:
     AWS_REGION: us-east-1
   stage: deployment test
   script:
-    - molecule --debug test -s cloud-aws-direct
+    - molecule test -s cloud-aws-direct
   tags:
     - aws
