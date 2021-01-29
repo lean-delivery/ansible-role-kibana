@@ -1,5 +1,8 @@
 ---
 - name: Converge
   hosts: all
+  vars:
+    elastic_branch: 7
   roles:
+    - role: lean_delivery.elasticsearch
     - role: ansible-role-kibana
