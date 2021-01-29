@@ -5,10 +5,9 @@ dependency:
     role-file: requirements.yml
 driver:
   name: ec2
-lint:
-  name: yamllint
-  options:
-    config-file: .yamllint
+lint: yamllint
+  # options:
+  #   config-file: .yamllint
 platforms:
   # - name: test-aws-centos7-kibana
   #   image: ami-9887c6e7
