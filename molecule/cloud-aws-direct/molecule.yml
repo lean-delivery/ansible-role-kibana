@@ -68,11 +68,11 @@ provisioner:
     create: ../resources/provisioning/AWS/create.yml
     destroy: ../resources/provisioning/AWS/destroy.yml
     verify: ../resources/tests/verify.yml
-  lint:
-    name: ansible-lint
+  lint: |
+    ansible-lint
 scenario:
   name: cloud-aws-direct
 verifier:
   name: ansible
-  lint:
-    name: ansible-lint
+  lint: |
+    ansible-lint
