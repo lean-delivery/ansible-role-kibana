@@ -16,12 +16,10 @@ galaxy_info:
         - 7
     - name: Ubuntu
       versions:
-        - xenial
         - bionic
     - name: Debian
       versions:
         - stretch
-        - jessie
 
   galaxy_tags:
     - monitoring

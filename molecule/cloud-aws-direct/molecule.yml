@@ -5,33 +5,29 @@ dependency:
     role-file: requirements.yml
 driver:
   name: ec2
-lint: |
-  yamllint .
-  ansible-lint --exclude meta .git
-  # options:
-  #   config-file: .yamllint
+lint: ansible-lint
 platforms:
-  # - name: test-aws-centos7-kibana
-  #   image: ami-9887c6e7
-  #   platform: centos7
-  #   instance_type: m5.large
-  #   region: us-east-1
-  #   vpc_subnet_id: subnet-0f2b9cd66faea38af
-  #   assign_public_ip: false
-  #   spot_price: 0.06
-  #   security_group_name:
-  #     - default
-  #   wait_timeout: 1800
-  #   ssh_user: centos
-  #   groups:
-  #     - rhel_family
+  - name: test-aws-centos7-kibana
+    image: ami-9887c6e7
+    platform: centos7
+    instance_type: m5.large
+    region: us-east-1
+    vpc_subnet_id: subnet-05a2ef2b767afec50
+    assign_public_ip: false
+    spot_price: 0.06
+    security_group_name:
+      - default
+    wait_timeout: 1800
+    ssh_user: centos
+    groups:
+      - rhel_family
 
   - name: test-aws-ubuntu18-kibana
     image: ami-012fd5eb46f56731f
     platform: ubuntu18
     instance_type: m5.large
     region: us-east-1
-    vpc_subnet_id: subnet-0f2b9cd66faea38af
+    vpc_subnet_id: subnet-05a2ef2b767afec50
     assign_public_ip: false
     security_group_name:
       - default
@@ -46,7 +42,7 @@ platforms:
     platform: debian9
     instance_type: m5.large
     region: us-east-1
-    vpc_subnet_id: subnet-0f2b9cd66faea38af
+    vpc_subnet_id: subnet-05a2ef2b767afec50
     assign_public_ip: false
     spot_price: 0.06
     security_group_name:
@@ -71,9 +67,8 @@ provisioner:
     create: ../resources/provisioning/AWS/create.yml
     destroy: ../resources/provisioning/AWS/destroy.yml
     verify: ../resources/tests/verify.yml
-  # lint: ansible-lint
+    prepare: ../resources/prepare.yml
 scenario:
   name: cloud-aws-direct
 verifier:
   name: ansible
-  # lint: ansible-lint

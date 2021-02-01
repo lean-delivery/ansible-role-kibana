@@ -5,9 +5,7 @@ dependency:
     role-file: requirements.yml
 driver:
   name: docker
-lint: |
-  yamllint .
-  ansible-lint --exclude meta .git
+lint: ansible-lint
 platforms:
   - name: test-docker-centos7-kibana
     image: leandelivery/docker-systemd:centos7
@@ -33,9 +31,8 @@ provisioner:
   # log: true
   playbooks:
     verify: ../resources/tests/verify.yml
-  # lint: ansible-lint
+    prepare: ../resources/prepare.yml
 scenario:
   name: default
 verifier:
   name: ansible
-  # lint: ansible-lint
