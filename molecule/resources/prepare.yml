@@ -12,6 +12,6 @@
   hosts: all
   roles:
     - role: lean_delivery.java
-    - role: ansible-role-elasticsearch
+    - role: lean_delivery.elasticsearch
       elasticsearch_host: '{{ ansible_host }}'
       elastic_branch: 7
