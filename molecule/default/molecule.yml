@@ -28,7 +28,7 @@ platforms:
       - debian_family
 provisioner:
   name: ansible
-  # log: true
+  log: false
   playbooks:
     verify: ../resources/tests/verify.yml
     prepare: ../resources/prepare.yml

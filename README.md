@@ -1,8 +1,8 @@
 kibana role
 =========
 [![License](https://img.shields.io/badge/license-Apache-green.svg?style=flat)](https://raw.githubusercontent.com/lean-delivery/ansible-role-kibana/master/LICENSE)
-[![Build Status](https://travis-ci.org/lean-delivery/ansible-role-kibana.svg?branch=master)](https://travis-ci.org/lean-delivery/ansible-role-kibana)
-[![Build Status](https://gitlab.com/lean-delivery/ansible-role-kibana/badges/master/pipeline.svg)](https://gitlab.com/lean-delivery/ansible-role-kibana/pipelines)
+[![Build Status](https://travis-ci.com/lean-delivery/ansible-role-kibana.svg?branch=master)](https://travis-ci.com/lean-delivery/ansible-role-kibana)
+[![Build Status](https://gitlab.com/lean-delivery/ansible-role-kibana/badges/master/pipeline.svg)](https://gitlab.com/lean-delivery/ansible-role-kibana/-/pipelines)
 [![Galaxy](https://img.shields.io/badge/galaxy-lean__delivery.kibana-blue.svg)](https://galaxy.ansible.com/lean_delivery/kibana)
 ![Ansible](https://img.shields.io/ansible/role/d/29387.svg)
 ![Ansible](https://img.shields.io/badge/dynamic/json.svg?label=min_ansible_version&url=https%3A%2F%2Fgalaxy.ansible.com%2Fapi%2Fv1%2Froles%2F29387%2F&query=$.min_ansible_version)
@@ -20,14 +20,14 @@ Requirements
  - Version of the ansible for installation: 2.9
  - **Supported OS**:  
    - EL
-     - 6
      - 7
+     - 8
    - Ubuntu
      - 16.04
      - 18.04
    - Debian
-     - 8
      - 9
+     - 10
 
 ## Role Variables
 
@@ -74,12 +74,12 @@ Requirements
 Example Playbook
 ----------------
 
-### Installing kibana 6.x version:
+### Installing kibana 7.x version:
 ```yaml
 - name: Install kibana
   hosts: kibana-host
   vars:
-    elastic_branch: 6
+    elastic_branch: 7
     kibana_host: localhost
   roles:
      - role: lean_delivery.kibana

@@ -12,6 +12,8 @@
   hosts: all
   roles:
     - role: lean_delivery.java
+      java_major_version: 8
+      transport: repositories
     - role: lean_delivery.elasticsearch
       elasticsearch_host: '{{ ansible_host }}'
       elastic_branch: 7
