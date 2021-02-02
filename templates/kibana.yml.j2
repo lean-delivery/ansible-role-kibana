@@ -7,7 +7,11 @@ server.port: '{{ kibana_port }}'
 server.host: '{{ kibana_host }}'
 
 # The URL of the Elasticsearch instance to use for all your queries.
+{% if elastic_branch is version('7', '>=') %}
+elasticsearch.hosts: '{{ kibana_elasticsearch_url }}'
+{% else %}
 elasticsearch.url: '{{ kibana_elasticsearch_url }}'
+{% endif %}
 
 # Kibana uses an index in Elasticsearch to store saved searches, visualizations and
 # dashboards. Kibana creates a new index if the index doesn't already exist.

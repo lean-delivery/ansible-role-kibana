@@ -1,6 +1,6 @@
 ---
 # Version should be "6" or higher
-elastic_branch: 6
+elastic_branch: 7
 es_version: '{{ es_major_version }}'
 kibana_version: '{{ es_version }}'
 kibana_port: 5601

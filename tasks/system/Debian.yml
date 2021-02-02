@@ -9,6 +9,7 @@
       apt:
         name: apt-transport-https
         state: present
+        cache_valid_time: 86400
       register: installed_transport
       until: installed_transport is succeeded
 
@@ -41,6 +42,7 @@
         state: directory
         owner: root
         group: root
-        recurse: true
+        mode: 0755
+        recurse: false
 
   become: true
