@@ -22,6 +22,20 @@ platforms:
     groups:
       - rhel_family
 
+  - name: test-aws-rhel8-kibana
+    platform: rhel8
+    instance_type: m5.large
+    region: us-east-1
+    vpc_subnet_id: subnet-05a2ef2b767afec50
+    assign_public_ip: false
+    spot_price: 0.1
+    security_group_name:
+      - default
+    wait_timeout: 1800
+    ssh_user: ec2-user
+    groups:
+      - rhel_family
+
   - name: test-aws-ubuntu18-kibana
     image: ami-012fd5eb46f56731f
     platform: ubuntu18
